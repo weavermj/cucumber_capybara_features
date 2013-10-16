@@ -1,0 +1,78 @@
+<!DOCTYPE>
+<html lang="en-GB">
+    <head>
+        <title><%= @title %></title>
+
+        <style>
+            .box {
+                background: yellow;
+                width: 100px;
+                height: 100px;
+                display: block;
+            }
+
+            .box:hover {
+                background: red;
+            }
+
+            .box2 {
+
+            }
+
+           @media (min-width: 0) and (max-width: 320) {
+                #box2 {display: none;}
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Working</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, ullam voluptatem qui doloremque neque a deserunt quo enim. Aspernatur placeat inventore esse quod sint accusantium. Aliquid illo nulla molestiae cum.</p>
+        </div>
+
+        <hr>
+
+        <div class="posts">
+            <ul>
+
+            </ul>
+        </div>
+
+        <div id="box" class="box">
+        </div>
+
+        <div id="box2" class="box2">Hello I am box2 and only visible at 720px</div>
+
+         <hr>
+
+        <button id="fetch_post">Fetch Post</button>
+
+        <footer>
+            <div class="counter"><h2>0</h2></div>
+        </footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+        $(document).ready( function() {
+
+            $('#fetch_post').on('click', function() {
+                $("<li>", {
+                    class: 'post',
+                    text: "My Title - Hello world this is a post " + parseInt(Math.random()* 100)
+                }).appendTo(".posts ul");
+            });
+
+            setInterval(function() {
+                var time_text = $(".counter h2"),
+                    timer = parseInt(time_text.text());
+                time_text.text(timer += 1);
+            }, 1000);
+
+        });
+        </script>
+    </body>
+</html>
